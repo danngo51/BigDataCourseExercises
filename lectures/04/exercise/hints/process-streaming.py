@@ -10,7 +10,6 @@ if __name__ == "__main__":
     # Create a Spark session and context
     spark = get_spark_context(
         app_name="Kafka Streaming",
-        app_name="Kafka Streaming",
         config=SPARK_ENV.K8S,
         additional_conf=additional_conf
     )
@@ -33,7 +32,6 @@ if __name__ == "__main__":
     json_schema = T.StructType([
         T.StructField("correlation_id", T.StringType(), False),
         T.StructField("created_at", T.DoubleType(), False),
-        T.StructField("created_at", T.DoubleType(), False),  # Ensure 'created_at' is DoubleType for timestamp conversion
         T.StructField("payload", T.StringType(), False),
         T.StructField("schema_version", T.LongType(), False)
     ])
