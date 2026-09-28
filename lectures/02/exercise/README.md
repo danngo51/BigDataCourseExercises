@@ -70,7 +70,8 @@ reading files, uploading files, and deleting files in HDFS. The HDFS CLI tool is
 
 You can simply create a file by echoing text in combination with the pipe operator:
 `echo "Hello there\nNice work!" > test.txt`. Verify that the file exists by using `ls` and verify its contents using
-`cat test.txt`.
+`cat test.txt`.l
+
 </details>
 
 To add a file to the HDFS cluster using the HDFS CLI you can use the `-put` command.
@@ -81,6 +82,7 @@ To add a file to the HDFS cluster using the HDFS CLI you can use the `-put` comm
   <summary><strong>Hint:</strong> Uploading the file</summary>
 
 `hdfs dfs -fs hdfs://namenode:9000 -put ./<filename> /<filename>`
+
 </details>
 
 Now that you have uploaded a file to HDFS you can try to list the files to verify that it is added. Similarly to Unix
@@ -92,6 +94,7 @@ systems you can use the `-cat` command to read the content of a given file.
   <summary><strong>Hint:</strong> Reading the file</summary>
 
 `hdfs dfs -fs hdfs://namenode:9000 -cat /test.txt`
+
 </details>
 
 **Task**: Try to delete the file from HDFS
@@ -102,6 +105,7 @@ systems you can use the `-cat` command to read the content of a given file.
   <summary><strong>Hint:</strong> Deleting the file</summary>
 
 `hdfs dfs -fs hdfs://namenode:9000 -rm /test.txt`
+
 </details>
 
 You are now able to list files and folders, read files, upload files, and delete files, using HDFS.
@@ -170,10 +174,10 @@ We now want to try to interact with the HDFS cluster using Python. To do this, t
 1. Create
    an [interactive container](../../../services/interactive/README.md#attach-visual-studio-code-to-a-running-container) and
    attach Visual Studio Code to it.
-1. Copy the [example.py](./example.py) and [src/client.py](./src/client.py) files to the container.
-1. Install `hdfs` library using `pip install hdfs` in the container, if needed.
-1. Verify the [src/client.py](./src/client.py) module uses the correct namenode.
-1. Run the [example.py](./example.py) script and observe what's happening.
+2. Copy the [example.py](./example.py) and [src/client.py](./src/client.py) files to the container.
+3. Install `hdfs` library using `pip install hdfs` in the container, if needed.
+4. Verify the [src/client.py](./src/client.py) module uses the correct namenode.
+5. Run the [example.py](./example.py) script and observe what's happening.
 
 **Notice**: You should see that the script prints the entire Alice in Wonderland text to the console and that it then
 creates a file called "write.txt" with some text.
@@ -194,11 +198,11 @@ saves the 10 most common words to a file called "word-count.json".
 **Tasks**:
 
 1. Copy the script to the interactive container.
-1. Install required libraries (if needed).
-1. Run the [`counting-json.py`](./counting-json.py) file.
-1. Read the result directly from HDFS.
-    1. What are the five most common words in Alice in Wonderland?
-    1. How many times are they repeated?
+2. Install required libraries (if needed).
+3. Run the [`counting-json.py`](./counting-json.py) file.
+4. Read the result directly from HDFS.
+   1. What are the five most common words in Alice in Wonderland?
+   2. How many times are they repeated?
 
 ### Exercise 8 - Analyzing file and saving result in Avro format using Python
 
@@ -213,9 +217,9 @@ different.
 **Tasks**:
 
 1. Copy the script to the interactive container.
-1. Install required libraries (if needed).
-1. Run the [`counting-avro.py`](./counting-avro.py) file.
-1. Read and output the result of the stored files directly from HDFS using HDFS CLI.
+2. Install required libraries (if needed).
+3. Run the [`counting-avro.py`](./counting-avro.py) file.
+4. Read and output the result of the stored files directly from HDFS using HDFS CLI.
 
 ### Exercise 9 - Analyzing file and saving result in Parquet format using Python
 
@@ -226,10 +230,10 @@ We will now try to save a Parquet file to HDFS.
 **Tasks**:
 
 1. Copy the script to the interactive container.
-1. Install required libraries (if needed).
-1. Run the [`counting-parquet`](./counting-parquet.py) file.
-1. Read and output the result of the stored files directly from HDFS using HDFS CLI.
-    1. How many column do the dataframe have?
+2. Install required libraries (if needed).
+3. Run the [`counting-parquet`](./counting-parquet.py) file.
+4. Read and output the result of the stored files directly from HDFS using HDFS CLI.
+   1. How many column do the dataframe have?
 
 ### Exercise 10 - Create six fictive data sources
 
@@ -248,14 +252,14 @@ You have the role of a data engineer and are required to store the samples from 
 **Tasks**:
 
 1. Which file format is most suitable for storing sensor samples?
-1. How will you design the folder structure of your sensor samples?
-1. Define a common schema for the fictive data sources
-1. Write a Python program for the fictive data source that simulates the six sensors. Make use of the knowledge from
+2. How will you design the folder structure of your sensor samples?
+3. Define a common schema for the fictive data sources
+4. Write a Python program for the fictive data source that simulates the six sensors. Make use of the knowledge from
    exercises 5 to 8.
-1. Write a Kubernetes deployment for your Python program.
-    - How will you use the same Python program for each of the stations?
-    - How will you write the Dockerfile and which image will you start from?
-1. Write a short description of how you will deploy these data sources in Kubernetes together with your thoughts and
+5. Write a Kubernetes deployment for your Python program.
+   - How will you use the same Python program for each of the stations?
+   - How will you write the Dockerfile and which image will you start from?
+6. Write a short description of how you will deploy these data sources in Kubernetes together with your thoughts and
    conclusion to the two first questions in our Discord channel!
 
 <details>
@@ -267,7 +271,6 @@ You have the role of a data engineer and are required to store the samples from 
 
 </details>
 
-
 <details>
   <summary><strong>Hint:</strong> One folder structure</summary>
 
@@ -276,7 +279,6 @@ You have the role of a data engineer and are required to store the samples from 
 ```
 
 </details>
-
 
 <details>
   <summary><strong>Hint:</strong> One suggested schema</summary>
@@ -342,15 +344,15 @@ The script will delete all resources created in the exercises.
 To clean up the resources created in this lecture, you can follow the steps below:
 
 - Today's exercises.
-    1. run the follow cmd: `kubectl delete pod <name>` created
-       in [exercise 2](#exercise-2---interacting-with-hdfs-cluster-using-cli).
+  1. run the follow cmd: `kubectl delete pod <name>` created
+     in [exercise 2](#exercise-2---interacting-with-hdfs-cluster-using-cli).
 - cd into the `services/hdfs` folder in the repository.
-    1. `kubectl delete -f hdfs-cli.yaml` (if used)
-    1. `kubectl delete -f datanodes.yaml`
-    1. `kubectl delete -f namenode.yaml`
-    1. `kubectl delete -f configmap.yaml`
+  1. `kubectl delete -f hdfs-cli.yaml` (if used)
+  2. `kubectl delete -f datanodes.yaml`
+  3. `kubectl delete -f namenode.yaml`
+  4. `kubectl delete -f configmap.yaml`
 - cd into the `services/interactive` folder in the repository.
-    1. `kubectl delete -f interactive.yaml`
+  1. `kubectl delete -f interactive.yaml`
 
 You can get a list of the pods and services to verify that they are deleted.
 
